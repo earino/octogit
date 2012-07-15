@@ -228,6 +228,14 @@ def get_single_issue(user, repo, number):
     description = description_clean(issue['body'])
     puts(description)
 
+def view_gist(gist_id):
+    """
+    Displays the specified gist in a browser
+    """
+
+    github_view_url = 'https://gist.github.com/gists/%s' % (gist_id)
+    webbrowser.open(github_view_url)
+
 def get_gists(user):
 	github_gists_url = 'https://api.github.com/users/%s/gists' % (user)
 	gists = requests.get(github_gists_url)
