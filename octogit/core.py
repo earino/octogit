@@ -12,7 +12,6 @@ import sys
 import subprocess
 import webbrowser
 import requests
-import pprint
 from clint.textui import colored, puts, columns
 
 from .config import get_username, get_password
@@ -244,7 +243,6 @@ def get_gists(user):
 	except ValueError:
 		raise ValueError(gists.content)
 	
-	pp = pprint.PrettyPrinter(indent=4)
 	for gist in data:
 		width = [[colored.yellow('#'+str(gist['id'])), 2],]
 		width.append(['{0}'.format(gist['description']), 70])
@@ -254,7 +252,7 @@ def get_gists(user):
 				width.append([colored.blue("size:"), 6])
 				width.append(["{0}".format(gist['files'][file]['size']), 8])
 				width.append([colored.blue("language:"), 10])
-				width.append(["{0}".format(gist['files'][file]['language']), 10])
+				width.append(["{0}".format(gist['files'][file]['language']), 15])
 	
 		print columns(*width)
 		
